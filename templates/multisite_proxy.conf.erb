@@ -1,0 +1,12 @@
+#
+# this file is managed by puppet!
+#
+
+<% sites.sort.each do |key,val| -%>
+<Location /<%= key %>>
+	Options +FollowSymLinks
+	RewriteEngine On
+	RewriteRule ^/.+/<%= key %>/(.*) http://<%= val %>/<%= key %>/$1 [P]
+</Location>
+<% end -%>
+

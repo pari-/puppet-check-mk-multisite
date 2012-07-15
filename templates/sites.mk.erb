@@ -1,0 +1,14 @@
+#
+# this file is managed by puppet!
+#
+
+sites = {
+<% sites.sort.each do |key,val| -%>
+  "<%= key %>": {
+     "alias":          "<%= key %>",
+     "socket":         "tcp:<%= val %>:6557",
+     "url_prefix":     "/<%= key %>/",
+   },
+<% end -%>
+}
+
